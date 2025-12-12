@@ -1,0 +1,285 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Time commands
+command_timeout = 20000
+scan_timeout = 10
+
+# Replace the ''❯'' symbol in the prompt with ''➜''
+[character] # The name of the module we are configuring is 'character'
+success_symbol = "[❯](yellow)" # The 'success_symbol' segment is being set to ''➜'' with the color 'bold green'
+error_symbol = "[✗](bold red)"
+#
+# Directory
+[directory]
+truncation_length = 8
+truncate_to_repo = false
+style = '117'
+read_only = " "
+# read_only = " "
+home_symbol = "~"
+
+#to display the hostname before the character line
+[hostname]
+ssh_only = false
+style = 'italic blue'
+format = '[󱄅 $hostname]($style) in '
+disabled = false
+
+# Git Branch
+[git_branch]
+# format = 'on [$symbol$branch(:$remote_branch)]($style)'
+format = 'on [$symbol$branch(:$remote_branch)]($style) '
+style = '9'
+
+# Git Status
+[git_status]
+# format = '([$modified $untracked $staged $renamed $deleted $stashed $diverged $up_to_date $ahead_behind $conflicted]($style))'
+# format = '([$all_status $ahead_behind]($style))'
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = '117'
+conflicted = '🚩->$count'
+ahead = 'Ahead->$count'
+behind = 'Behind->$count'
+diverged = 'Ahead->$ahead_count Behind->$behind_count'
+stashed = 'Stashed->$count'
+up_to_date = 'Up to date'
+modified = '[Modified->$count](yellow)'
+untracked = '[Untracked->$count](red)'
+staged = '[Staged->$count](green)'
+renamed = '[Renamed->$count](blue)'
+deleted = '[Deleted->$count](bold red)'
+
+[package]
+format = '[($symbol $version)]($style)'
+
+[container]
+format = '[$symbol \[$name]($style) '
+
+# Python
+[python]
+symbol = " "
+
+# Golang
+[golang]
+symbol = ' '
+style = '189'
+
+[aws]
+symbol = '☁️ '
+
+[conda]
+symbol = ' '
+
+[dart]
+symbol = ' '
+
+[docker_context]
+disabled = false
+format = '[  $context](blue bold) '
+only_with_files = true
+detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
+
+[elixir]
+symbol = ' '
+
+[elm]
+symbol = ' '
+
+[java]
+symbol = ' '
+style = '222'
+
+[julia]
+symbol = ' '
+
+[nim]
+symbol = ' '
+
+[nix_shell]
+symbol = ' '
+
+[perl]
+symbol = ' '
+
+[ruby]
+symbol = ' '
+
+[rust]
+symbol = ' '
+
+[scala]
+symbol = ' '
+
+[shlvl]
+symbol = ' '
+
+[swift]
+symbol = 'ﯣ '
+
+[lua]
+format = '[ ($version )](blue)'
+
+[c]
+style = '149'
+
+[php]
+format = '[🐘$version](147 bold) '
+
+[bun]
+symbol = ' '
+format = '[$symbol($version )](white bold)'
+
+[zig]
+symbol = ' '
+format = '[$symbol($version )](yellow bold)'
+#
+# [c]
+# format = '[$symbol($version(-$name))]($style)'
+#
+# [cmake]
+# format = '[$symbol($version)]($style)'
+#
+# [cobol]
+# format = '[$symbol($version)]($style)'
+#
+# [conda]
+# format = '[$symbol$environment]($style)'
+#
+# [crystal]
+# format = '[$symbol($version)]($style)'
+#
+# [daml]
+# format = '[$symbol($version)]($style)'
+#
+# [dart]
+# format = '[$symbol($version)]($style)'
+#
+# [deno]
+# format = '[$symbol($version)]($style)'
+#
+# [docker_context]
+# format = '[$symbol$context]($style)'
+#
+# [dotnet]
+# format = '[$symbol($version)(🎯 $tfm)]($style)'
+#
+# [elixir]
+# format = '[$symbol($version \(OTP $otp_version\))]($style)'
+#
+# [elm]
+# format = '[$symbol($version)]($style)'
+#
+# [erlang]
+# format = '[$symbol($version)]($style)'
+#
+# [fennel]
+# format = '[$symbol($version)]($style)'
+#
+# [fossil_branch]
+# format = '[$symbol$branch]($style)'
+#
+# [gcloud]
+# format = '[$symbol$account(@$domain)(\($region\))]($style)'
+#
+# [gradle]
+# format = '[$symbol($version)]($style)'
+#
+# [guix_shell]
+# format = '[$symbol]($style)'
+#
+# [haskell]
+# format = '[$symbol($version)]($style)'
+#
+# [haxe]
+# format = '[$symbol($version)]($style)'
+#
+# [helm]
+# format = '[$symbol($version)]($style)'
+#
+# [hg_branch]
+# format = '[$symbol$branch]($style)'
+#
+# [java]
+# format = '[$symbol($version)]($style)'
+#
+# [julia]
+# format = '[$symbol($version)]($style)'
+#
+# [kotlin]
+# format = '[$symbol($version)]($style)'
+#
+# [kubernetes]
+# format = '[$symbol$context( \($namespace\))]($style)'
+#
+# [lua]
+# format = '[$symbol($version)]($style)'
+#
+# [memory_usage]
+# format = '[$symbol[$ram( | $swap)]($style)'
+#
+# [meson]
+# format = '[$symbol$project]($style)'
+#
+# [nim]
+# format = '[$symbol($version)]($style)'
+#
+# [nix_shell]
+# format = '[$symbol$state( \($name\))]($style)'
+#
+[nodejs]
+format = '[$symbol($version)]($style) '
+
+# [ocaml]
+# format = '[$symbol($version)(\($switch_indicator$switch_name\))]($style)'
+#
+# [opa]
+# format = '[$symbol($version)]($style)'
+#
+# [perl]
+# format = '[$symbol($version)]($style)'
+#
+# [pijul_channel]
+# format = '[$symbol$channel]($style)'
+#
+# [pulumi]
+# format = '[$symbol$stack]($style)'
+#
+# [purescript]
+# format = '[$symbol($version)]($style)'
+#
+# [raku]
+# format = '[$symbol($version-$vm_version)]($style)'
+#
+# [red]
+# format = '[$symbol($version)]($style)'
+#
+# [ruby]
+# format = '[$symbol($version)]($style)'
+#
+# [rust]
+# format = '[$symbol($version)]($style)'
+#
+# [scala]
+# format = '[$symbol($version)]($style)'
+#
+# [spack]
+# format = '[$symbol$environment]($style)'
+#
+# [swift]
+# format = '[$symbol($version)]($style)'
+#
+# [terraform]
+# format = '[$symbol$workspace]($style)'
+#
+# [vagrant]
+# format = '[$symbol($version)]($style)'
+#
+# [vlang]
+# format = '[$symbol($version)]($style)'
+#
+# [zig]
+# format = '[$symbol($version)]($style)'
+#
+# [solidity]
+# format = '[$symbol($version)($style)'

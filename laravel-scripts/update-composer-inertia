@@ -1,0 +1,161 @@
+#!/usr/bin/env python3
+
+import re
+import json
+
+def update_composer_scripts(file_path='composer.json'):
+    """
+    Update the composer.json scripts section from the old test format
+    to the new comprehensive scripts structure.
+    """
+    try:
+        # Read and parse the JSON file
+        with open(file_path, 'r') as file:
+            data = json.load(file)
+        
+        # Check if scripts section exists
+        if 'scripts' not in data:
+            print("No 'scripts' section found in the file.")
+            return False
+        
+        # Update the scripts section
+        data['scripts'] = {
+            "setup": [
+                "composer install",
+                "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
+                "@php artisan key:generate",
+                "@php artisan migrate --force",
+                "npm install",
+                "npm run build"
+            ],
+            "dev": [
+                "Composer\\Config::disableProcessTimeout",
+                "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
+            ],
+            "dev:ssr": [
+                "npm run build:ssr",
+                "Composer\\Config::disableProcessTimeout",
+                "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"php artisan inertia:start-ssr\" --names=server,queue,logs,ssr --kill-others"
+            ],
+            "format": [
+                "pint --parallel",
+                "npm run format"
+            ],
+            "analyse": [
+                "phpstan analyse"
+            ],
+            "refactor": [
+                "rector"
+            ],
+            "test:unit": [
+                "pest --parallel"
+            ],
+            "format:check": [
+                "pint --test",
+                "npm run format:check"
+            ],
+            "test:refactor": [
+                "rector --dry-run"
+            ],
+            "test": [
+                "@test:refactor",
+                "@format:check",
+                "@test:unit",
+                "@analyse"
+            ],
+            "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+            ],
+            "post-update-cmd": [
+                "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            ],
+            "post-root-package-install": [
+                "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+            ],
+            "post-create-project-cmd": [
+                "@php artisan key:generate --ansi",
+                "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+                "@php artisan migrate --graceful --ansi"
+            ],
+            "pre-package-uninstall": [
+                "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+            ]
+        }
+        
+        # Write back to the file with proper formatting
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=4)
+        
+        print(f"Successfully updated {file_path}")
+        return True
+        
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+        return False
+    except json.JSONDecodeError:
+        print(f"Invalid JSON in {file_path}")
+        return False
+
+# For direct string replacement (if you have the exact string in any file):
+def replace_string_in_file(file_path, old_string, new_string):
+    """Replace a specific string in a file."""
+    try:
+        with open(file_path, 'r') as file:
+            content = file.read()
+        
+        if old_string in content:
+            updated_content = content.replace(old_string, new_string)
+            
+            with open(file_path, 'w') as file:
+                file.write(updated_content)
+            
+            print(f"String replaced successfully in {file_path}")
+            return True
+        else:
+            print(f"Old string not found in {file_path}")
+            return False
+            
+    except FileNotFoundError:
+        print(f"File not found: {file_path}")
+        return False
+
+# Usage examples:
+if __name__ == "__main__":
+    # Method 1: Parse as JSON (recommended)
+    update_composer_scripts('composer.json')
+    
+    # Method 2: Direct string replacement
+    # old_str = '''"test": [
+    #     "@php artisan config:clear --ansi",
+    #     "@php artisan 
+    # ],'''
+    # 
+    # new_str = '''"format": [
+    #         "pint --parallel",
+    #         "npm run format"
+    #     ],
+    #     "analyse": [
+    #         "phpstan analyse"
+    #     ],
+    #     "refactor": [
+    #         "rector"
+    #     ],
+    #     "test:unit": [
+    #         "pest --parallel"
+    #     ],
+    #     "format:check": [
+    #         "pint --test",
+    #         "npm run format:check"
+    #     ],
+    #     "test:refactor": [
+    #         "rector --dry-run"
+    #     ],
+    #     "test": [
+    #         "@test:refactor",
+    #         "@format:check",
+    #         "@test:unit",
+    #     "@analyse"
+    # ]'''
+    # 
+    # replace_string_in_file('your-file.json', old_str, new_str)
