@@ -4,9 +4,10 @@
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = ""; # Change this to your user
-  home.homeDirectory = ""; # Change this to your home directorie
+  home.homeDirectory = "";   # Change this to your home directory
 
   services.network-manager-applet.enable = true;
+  services.playerctld.enable = true;
 
   programs.obs-studio = {
     enable = true;
@@ -170,6 +171,7 @@
     php
     php84Packages.composer
     php84Extensions.xdebug
+    playerctl
     prettier
     pnpm
     python315
