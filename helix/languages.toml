@@ -4,7 +4,7 @@ args = ["--stdio"]
 
 [[language-server.typescript-language-server.config.plugins]]
 name = "@vue/typescript-plugin"
-location = "/home/mau/.nix-profile/bin/typescript-language-server"
+location = "/home/mau/.npm-global/lib/node_modules/@vue/typescript-plugin"
 languages = ["vue"]
 
 [language-server.golangci-lint-lsp]
