@@ -30,10 +30,9 @@
       "backlight",
       "sway/language",
       "battery",
+      "battery#bat1",
       "clock",
-      // "custom/weather",
       "tray"
-      // "custom/power",
     ],
     // Modules configuration
     // "sway/workspaces": {
@@ -135,7 +134,7 @@
       "spacing": 10
     },
     "clock": {
-      "format": "{:%H:%M:%S %p}",
+      "format": "{:%H:%M:%S}",
       "timezone": "America/Mexico_City",
       "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
       "interval": 1,
@@ -146,7 +145,7 @@
       "tooltip": false
     },
     "memory": {
-      "format": "{used}GB"
+      "format": "{used}GB  "
     },
     "temperature": {
       "thermal-zone": 2,
@@ -155,7 +154,7 @@
       "format-critical": "{temperatureC}°C {icon}",
       "format": "{temperatureC}°C {icon}",
       "format-icons": [
-        "",
+        ""
       ]
     },
     "backlight": {
@@ -171,7 +170,7 @@
     },
     "battery": {
       "states": {
-        // "good": 95,
+        "good": 95,
         "warning": 30,
         "critical": 15
       },
@@ -190,8 +189,26 @@
         ""
       ]
     },
-    "battery#bat2": {
-      "bat": "BAT2"
+    "battery#bat1": {
+      "bat": "BAT1",
+      "interval": 30,
+      "states": {
+        "good": 95,
+        "warning": 30,
+        "critical": 15
+      },
+      "format": "{capacity}% {icon}",
+      "format-full": "{capacity}% {icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-alt": "{time} {icon}",
+      "format-icons": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ]
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -220,10 +237,10 @@
       // "scroll-step": 1, // %, can be a float
       "format": "{volume}% {icon} {format_source}",
       "format-bluetooth": "{volume}% {icon} {format_source}",
-      "format-bluetooth-muted": " {icon} {format_source}",
-      "format-muted": " {format_source}",
+      "format-bluetooth-muted": "  {icon} {format_source}",
+      "format-muted": "  {format_source}",
       "format-source": "{volume}% ",
-      "format-source-muted": "",
+      "format-source-muted": " ",
       "format-icons": {
         "headphone": "",
         "hands-free": "",
@@ -233,16 +250,16 @@
         "car": "",
         "default": [
           "",
-          "",
-          ""
+          " ",
+          " "
         ]
       },
       "on-click": "pavucontrol"
     },
     "disk": {
-    	"interval": 30,
-    	"format": "{specific_free:0.2f}GB",
-    	"unit": "GB"
+      "interval": 30,
+      "format": "{specific_free:0.2f}GB  ",
+      "unit": "GB"
     },
     "custom/media": {
       "format": "{0} {1}",
