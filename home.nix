@@ -52,6 +52,7 @@
       ild = "install-laravel-dependencies";
       format = "composer format";
       analyze = "composer analyse";
+      cfiles = "cp -r /etc/nixos/{fastfetch,ghostty,helix,laravel-scripts,starship,sway,swaylock,waybar,wofi} /etc/nixos/{configuration,home,flake}.nix /etc/nixos/.face ~/.config/dotfiles/";
     };
     bashrcExtra = ''
       fastfetch
