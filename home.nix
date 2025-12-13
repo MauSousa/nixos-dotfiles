@@ -150,6 +150,7 @@
     file
     firefox-devedition
     font-awesome
+    font-awesome_6
     fzf
     gcc
     ghostty
@@ -167,6 +168,7 @@
     macchina
     markdown-oxide
     marksman
+    nerd-fonts.caskaydia-cove
     nerd-fonts.iosevka-term
     nerd-fonts.jetbrains-mono
     nodejs_24
