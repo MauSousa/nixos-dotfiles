@@ -8,6 +8,7 @@
 
   services.network-manager-applet.enable = true;
   services.playerctld.enable = true;
+  services.flameshot.enable = true;
 
   programs.obs-studio = {
     enable = true;
@@ -46,6 +47,11 @@
       nx = "sudo hx /etc/nixos/configuration.nix";
       hnx = "sudo hx /etc/nixos/home.nix";
       rm = "rm -v";
+      pest = "./vendor/bin/pest";
+      pestp = "./vendor/bin/pest --parallel";
+      ild = "install-laravel-dependencies";
+      format = "composer format";
+      analyze = "composer analyse";
     };
     bashrcExtra = ''
       fastfetch
@@ -142,6 +148,7 @@
     fastfetch
     fd
     file
+    firefox-devedition
     font-awesome
     fzf
     gcc
@@ -163,6 +170,8 @@
     nerd-fonts.iosevka-term
     nerd-fonts.jetbrains-mono
     nodejs_24
+    nodePackages.typescript
+    nodePackages.typescript-language-server
     noto-fonts-color-emoji
     noto-fonts-monochrome-emoji
     nwg-displays
@@ -179,10 +188,10 @@
     rocmPackages.llvm.llvm
     tailwindcss-language-server
     taplo
-    nodePackages.typescript
-    nodePackages.typescript-language-server
     slurp
     swaynotificationcenter
+    sway-contrib.grimshot
+    uv
     vesktop
     vscode-langservers-extracted
     vue
