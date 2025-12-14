@@ -42,13 +42,14 @@ window {
   padding: 10px;
   border: none;
   border-radius: 0.1em;
-  color: #cdd6f4;
+  color: transparent;
   background-color: #1e1e2e;
 }
 
 #input image {
   border: none;
-  color: #f38ba8;
+  color: transparent;
+  background-color: transparent;
 }
 
 #input * {
@@ -60,8 +61,6 @@ window {
   margin: 5px;
   border: none;
   color: #cdd6f4;
-  /* color: #1e1e2e; */
-  /* background-color: transparent; */
 }
 
 #entry {
@@ -82,6 +81,10 @@ window {
 
 #entry:selected #text {
   color: #cdd6f4;
+  background-color: transparent;
+}
+
+#entry:selected image {
   background-color: transparent;
 }
 
