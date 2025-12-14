@@ -46,13 +46,16 @@
       rebuild = "sudo nixos-rebuild switch --flake /etc/nixos#nixstation";
       nx = "sudo hx /etc/nixos/configuration.nix";
       hnx = "sudo hx /etc/nixos/home.nix";
+      del_reb= "sudo nix-collect-garbage -d && sudo nixos-rebuild switch";
       rm = "rm -v";
       pest = "./vendor/bin/pest";
       pestp = "./vendor/bin/pest --parallel";
+      crd = "composer run dev";
       ild = "install-laravel-dependencies";
       format = "composer format";
       analyze = "composer analyse";
       cfiles = "cp -r /etc/nixos/{fastfetch,ghostty,helix,laravel-scripts,starship,sway,swaylock,waybar,wofi} /etc/nixos/{configuration,home,flake}.nix /etc/nixos/.face ~/.config/dotfiles/";
+      zr = "zig run src/main.zig";
     };
     bashrcExtra = ''
       fastfetch
